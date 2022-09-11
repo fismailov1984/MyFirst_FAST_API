@@ -36,7 +36,7 @@ async def get_details(nickname: str, current_user: UserSchema = Depends(get_curr
     return {**myinfo}
 
 
-@router.put('/infos/{user_id}/', response_model=InfoSchemaInPut)
+@router.put('/infos/{user_name}/', response_model=InfoSchemaInPut)
 async def update_info(nickname: str, info: InfoSchemaInPut, current_user: UserSchema = Depends(get_current_user)):
     query = Info.select().where(Info.c.nickname == nickname)
     myinfo = await database.fetch_one(query=query)
